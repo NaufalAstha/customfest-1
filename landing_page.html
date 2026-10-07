@@ -99,7 +99,7 @@
             background:
                 linear-gradient(180deg, rgba(9, 10, 9, .34) 0%, rgba(9, 10, 9, .1) 35%, #11110f 100%),
                 linear-gradient(90deg, rgba(9, 10, 9, .72), rgba(9, 10, 9, .08)),
-                url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1800&q=85") center 48% / cover;
+                url("asset/3.jpeg") center 52% / cover;
         }
 
         .hero::after {
@@ -265,6 +265,10 @@
             height: 100%;
             object-fit: cover;
             transition: transform .5s ease;
+        }
+
+        .activity-card--gear img {
+            object-position: center 68%;
         }
 
         .activity-card:hover img {
@@ -450,7 +454,10 @@
             .hero {
                 min-height: 780px;
                 padding: 140px 8% 100px;
-                background-position: center 55%;
+                background:
+                    linear-gradient(180deg, rgba(9, 10, 9, .34) 0%, rgba(9, 10, 9, .1) 35%, #11110f 100%),
+                    linear-gradient(90deg, rgba(9, 10, 9, .72), rgba(9, 10, 9, .08)),
+                    url("asset/4.jpeg") center 55% / cover;
             }
 
             .hero h1 {
@@ -533,7 +540,9 @@
 
         <main>
             <section class="hero" aria-labelledby="hero-title">
-                <h1 id="hero-title">HIGH OCTANE<span>KUSTOMFEST 2026</span></h1>
+                <h1 id="hero-title">HIGH OCTANE</h1>
+                <h1>at</h1>
+                <h1><span>KUSTOMFEST 2026</span></h1>
                 <p class="hero-copy">Tempat untuk membangkitkan semangat kebangkitan, energi membara, dan tenaga baru untuk mendongkrak ekonomi di dunia kustom culture.</p>
                 <a class="button" href="https://www.instagram.com/fxrindonesia" target="_blank" rel="noopener noreferrer">
                     Ikuti Instagram kami
@@ -555,7 +564,7 @@
 
                 <div class="activity-list">
                     <article class="activity-card">
-                        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80" alt="Motor klasik untuk inspirasi dan obrolan komunitas" loading="lazy">
+                        <img src="asset/4.jpeg" alt="Komunitas FXR berkendara bersama" loading="lazy">
                         <div class="activity-card-content">
                             <h3>Meet & connect</h3>
                             <p>Kenalan, bertukar cerita, dan temukan teman baru yang punya energi serupa.</p>
@@ -568,8 +577,8 @@
                             <p>Nikmati suasana acara, ngobrol santai, dan bikin momen seru bareng-bareng.</p>
                         </div>
                     </article>
-                    <article class="activity-card">
-                        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Inspirasi gaya dan outfit komunitas" loading="lazy">
+                    <article class="activity-card activity-card--gear">
+                        <img src="asset/2.jpeg" alt="Detail motor FXR untuk inspirasi gear komunitas" loading="lazy">
                         <div class="activity-card-content">
                             <span class="activity-number">03 / FXR STYLE</span>
                             <h3>Explore the gear</h3>
