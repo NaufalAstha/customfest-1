@@ -445,10 +445,154 @@
 
         .social-buttons {
             display: flex;
+            width: 100%;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 2px 2px 14px;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scroll-padding-inline: 2px;
+            overscroll-behavior-inline: contain;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .social-buttons::-webkit-scrollbar {
+            display: none;
+        }
+
+        #socialmedia {
+            display: flex;
+            min-height: 100vh;
+            min-height: 100svh;
             flex-direction: column;
-            flex-wrap: wrap;
-            gap: 30px;       
-            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .social-card {
+            flex: 0 0 clamp(260px, 31vw, 350px);
+            min-width: 0;
+            padding: 8px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            background: var(--panel);
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        .social-card-media {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1.08;
+            border-radius: 20px;
+            background: var(--paper);
+        }
+
+        .social-card-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s ease;
+        }
+
+        .social-card:hover .social-card-media img {
+            transform: scale(1.04);
+        }
+
+        .social-card-label {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 8px 11px;
+            border: 1px solid rgba(242, 240, 233, .22);
+            border-radius: 999px;
+            background: rgba(17, 17, 15, .76);
+            color: var(--ink);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .social-card-details {
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 14px 5px 5px;
+        }
+
+        .social-profile {
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .social-avatar {
+            display: block;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            object-fit: contain;
+            border: 1px solid var(--lime);
+            border-radius: 50%;
+            background: var(--paper);
+        }
+
+        .social-profile-copy {
+            min-width: 0;
+        }
+
+        .social-profile h3 {
+            overflow: hidden;
+            margin: 0 0 3px;
+            font-size: 11px;
+            font-weight: 900;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .social-profile p {
+            overflow: hidden;
+            margin: 0;
+            color: var(--muted);
+            font-size: 10px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .social-follow {
+            display: inline-flex;
+            min-height: 40px;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 12px;
+            border-radius: 12px;
+            background: var(--lime);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .06em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .social-follow:hover {
+            transform: translateY(-2px);
+            background: #EA4B34;
+        }
+
+        .social-follow:focus-visible {
+            outline: 2px solid var(--ink);
+            outline-offset: 3px;
         }
 
         .hero-logo-wrapper {
@@ -461,35 +605,39 @@
         }
 
         .hero-logo {
-            width: clamp(420px, 320vw, 620px);
+            width: min(90vw, 620px);
             height: auto;
             display: block;
             object-fit: contain;
             filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5)); 
         }
 
-        .hero-social-button{
-            width: 100%;
+        .hero-social-buttons {
             display: flex;
-            flex-direction: row;
+            width: min(100%, 560px);
+            flex-direction: column;
             gap: 12px;
         }
 
         .hero-social-buttons .button {
-            flex: 1;
-            width: auto;
+            width: 100%;
             text-align: center;
             padding-inline: 4px;
             font-size: 10px;
         }
 
-        @media (min-width: 700px) {
-            .social-buttons {
+        @media (min-width: 500px) {
+            .hero-social-buttons {
                 flex-direction: row;
-                gap: 24px;   
-                align-items: center;
             }
-            
+
+            .hero-social-buttons .button {
+                flex: 1;
+                width: auto;
+            }
+        }
+
+        @media (min-width: 700px) {
             .topbar {
                 padding: 30px 42px;
             }
@@ -564,6 +712,10 @@
                 scroll-behavior: auto;
             }
 
+            .social-buttons {
+                scroll-behavior: auto;
+            }
+
             *, *::before, *::after {
                 transition-duration: .01ms !important;
             }
@@ -585,26 +737,80 @@
             <section class="hero" aria-labelledby="hero-title">
                 <!--<h1 id="hero-title">HIGH OCTANE<span>KUSTOMFEST 2026</span></h1>
                 <p class="hero-copy">Tempat untuk membangkitkan semangat kebangkitan, energi membara, dan tenaga baru untuk mendongkrak ekonomi di dunia kustom culture.</p>-->
-                <div class="hero-social-buttons">
-                    <a class="button" href="https://www.instagram.com/fxrindonesia" target="_blank" rel="noopener noreferrer">
-                        FXR INDONESIA
-                    </a>
 
-                    <a class="button" href="https://www.instagram.com/raceworks.id/" target="_blank" rel="noopener noreferrer">
-                        RACEWORKS
-                    </a>
-
-                    <a class="button" href="https://www.instagram.com/fxrday.indonesia/" target="_blank" rel="noopener noreferrer">
-                        FXRDAY INDONESIA
-                    </a>
-                </div>
                 <div class="hero-logo-wrapper">
                     <img class="hero-logo" src="event-logo.png" alt="Logo FXR Indonesia">
                 </div>
                 <span class="hero-note">Community · Culture · Good times</span>
             </section>
 
-            <section class="section" id="aktivitas" aria-labelledby="activities-title">
+            <section class="section" id="socialmedia" aria-labelledby="contact-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Lebih Dekat Dengan Kami</p>
+                        <h2 id="contact-title">Ikuti Kami Di <span>Instagram</span></h2>
+                        <p class="section-intro">Cek Instagram kami untuk update terbaru</p>
+                    </div>
+                </div>
+
+                <div class="social-buttons">
+                    <article class="social-card">
+                        <div class="social-card-media">
+                            <img src="asset/4.jpeg" alt="Pengendara FXR dalam perjalanan bersama">
+                        </div>
+                        <div class="social-card-details">
+                            <div class="social-profile">
+                                <img class="social-avatar" src="logo.png" alt="Logo FXR Indonesia">
+                                <div class="social-profile-copy">
+                                    <h3>FXR Indonesia</h3>
+                                    <p>@fxrindonesia</p>
+                                </div>
+                            </div>
+                            <a class="social-follow" href="https://www.instagram.com/fxrindonesia" target="_blank" rel="noopener noreferrer">
+                                Ikuti <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="social-card">
+                        <div class="social-card-media">
+                            <img src="asset/2.jpeg" alt="Motor FXR dipajang di showroom">
+                        </div>
+                        <div class="social-card-details">
+                            <div class="social-profile">
+                                <img class="social-avatar" src="logo.png" alt="Logo FXR Indonesia">
+                                <div class="social-profile-copy">
+                                    <h3>Raceworks</h3>
+                                    <p>@raceworks.id</p>
+                                </div>
+                            </div>
+                            <a class="social-follow" href="https://www.instagram.com/raceworks.id/" target="_blank" rel="noopener noreferrer">
+                                Ikuti <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="social-card">
+                        <div class="social-card-media">
+                            <img src="asset/3.jpeg" alt="Komunitas FXR berkendara bersama">
+                        </div>
+                        <div class="social-card-details">
+                            <div class="social-profile">
+                                <img class="social-avatar" src="logo.png" alt="Logo FXR Indonesia">
+                                <div class="social-profile-copy">
+                                    <h3>FXRDay Indonesia</h3>
+                                    <p>@fxrday.indonesia</p>
+                                </div>
+                            </div>
+                            <a class="social-follow" href="https://www.instagram.com/fxrday.indonesia/" target="_blank" rel="noopener noreferrer">
+                                Ikuti <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section>
                 <div class="section-heading">
                     <div>
                         <p class="eyebrow">Lebih dari sekadar mampir</p>
@@ -707,17 +913,62 @@
                 </div>
 
                 <div class="social-buttons">
-                    <a class="button" href="https://www.instagram.com/fxrindonesia" target="_blank" rel="noopener noreferrer">
-                        FXR INDONESIA
-                    </a>
+                    <article class="social-card">
+                        <div class="social-card-media">
+                            <img src="asset/4.jpeg" alt="Pengendara FXR dalam perjalanan bersama">
+                            <span class="social-card-label">Instagram</span>
+                        </div>
+                        <div class="social-card-details">
+                            <div class="social-profile">
+                                <img class="social-avatar" src="logo.png" alt="Logo FXR Indonesia">
+                                <div class="social-profile-copy">
+                                    <h3>FXR Indonesia</h3>
+                                    <p>@fxrindonesia</p>
+                                </div>
+                            </div>
+                            <a class="social-follow" href="https://www.instagram.com/fxrindonesia" target="_blank" rel="noopener noreferrer">
+                                Ikuti <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
 
-                    <a class="button" href="https://www.instagram.com/raceworks.id/" target="_blank" rel="noopener noreferrer">
-                        RACEWORKS
-                    </a>
+                    <article class="social-card">
+                        <div class="social-card-media">
+                            <img src="asset/2.jpeg" alt="Motor FXR dipajang di showroom">
+                            <span class="social-card-label">Instagram</span>
+                        </div>
+                        <div class="social-card-details">
+                            <div class="social-profile">
+                                <img class="social-avatar" src="logo.png" alt="Logo FXR Indonesia">
+                                <div class="social-profile-copy">
+                                    <h3>Raceworks</h3>
+                                    <p>@raceworks.id</p>
+                                </div>
+                            </div>
+                            <a class="social-follow" href="https://www.instagram.com/raceworks.id/" target="_blank" rel="noopener noreferrer">
+                                Ikuti <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
 
-                    <a class="button" href="https://www.instagram.com/fxrday.indonesia/" target="_blank" rel="noopener noreferrer">
-                        FXRDAY INDONESIA
-                    </a>
+                    <article class="social-card">
+                        <div class="social-card-media">
+                            <img src="asset/3.jpeg" alt="Komunitas FXR berkendara bersama">
+                            <span class="social-card-label">Instagram</span>
+                        </div>
+                        <div class="social-card-details">
+                            <div class="social-profile">
+                                <img class="social-avatar" src="logo.png" alt="Logo FXR Indonesia">
+                                <div class="social-profile-copy">
+                                    <h3>FXRDay Indonesia</h3>
+                                    <p>@fxrday.indonesia</p>
+                                </div>
+                            </div>
+                            <a class="social-follow" href="https://www.instagram.com/fxrday.indonesia/" target="_blank" rel="noopener noreferrer">
+                                Ikuti <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
                 </div>
             </section>
         </main>
